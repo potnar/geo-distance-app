@@ -17,8 +17,17 @@
       </v-card-text>
     </v-card>
 
+    <!-- Loader -->
+    <v-progress-circular
+      v-if="loading"
+      indeterminate
+      color="primary"
+      size="40"
+      class="d-block mx-auto my-4"
+    />
+
     <v-card
-      v-if="distance"
+      v-if="distance && !loading"
       ref="resultSection"
       class="pa-4"
       elevation="2"
@@ -40,7 +49,7 @@ import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
-// Fix dla ikon markerów
+// Fix ikon Leaflet
 delete L.Icon.Default.prototype._getIconUrl
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: new URL('leaflet/dist/images/marker-icon-2x.png', import.meta.url).href,
@@ -49,13 +58,14 @@ L.Icon.Default.mergeOptions({
 })
 
 const zoom = ref(5)
-const center = ref([52.2297, 21.0122]) // Warszawa
+const center = ref([52.2297, 21.0122])
 const tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 const attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
 
 const pointA = ref(null)
 const pointB = ref(null)
 const distance = ref(null)
+const loading = ref(false)
 const resultSection = ref(null)
 
 const onMapClick = (e) => {
@@ -71,6 +81,7 @@ const onMapClick = (e) => {
 }
 
 const fetchDistanceFromBackend = async (pointA, pointB) => {
+  loading.value = true
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/calculate-distance.php`, {
       method: 'POST',
@@ -92,6 +103,8 @@ const fetchDistanceFromBackend = async (pointA, pointB) => {
   } catch (error) {
     console.error(error)
     return null
+  } finally {
+    loading.value = false
   }
 }
 
@@ -100,7 +113,7 @@ watch([pointA, pointB], async ([a, b]) => {
     const result = await fetchDistanceFromBackend(a, b)
     if (result) {
       distance.value = result.meters
-      await nextTick() 
+      await nextTick()
       resultSection.value?.$el?.scrollIntoView({ behavior: 'smooth' })
     }
   }

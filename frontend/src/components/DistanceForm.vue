@@ -62,7 +62,7 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="primary" @click="calculate">Oblicz</v-btn>
+        <v-btn color="primary" @click="calculate" :loading="loading">Oblicz</v-btn>
       </v-card-actions>
 
       <v-alert v-if="result" type="success" class="mt-4">
@@ -79,6 +79,7 @@ import { useToast } from 'vue-toastification'
 const toast = useToast()
 
 const cities = ref([])
+const loading = ref(false)
 const selectedA = ref(null)
 const selectedB = ref(null)
 
@@ -153,6 +154,8 @@ const validateInput = (event, label, type) => {
 const calculate = async () => {
   const coords = [lat1.value, lon1.value, lat2.value, lon2.value]
 
+  loading.value = true
+
   if (coords.some((v) => v === null || v === '')) {
     toast.error('Uzupełnij wszystkie współrzędne.')
     return
@@ -179,6 +182,8 @@ const calculate = async () => {
     result.value = await res.json()
   } catch (err) {
     toast.error(err.data || 'Wystąpił błąd podczas obliczania odległości.')
+  } finally {
+    loading.value = false
   }
 }
 </script>

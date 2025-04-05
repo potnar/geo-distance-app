@@ -1,57 +1,34 @@
-# .
+# 🌍 Geo Distance App
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplikacja webowa do obliczania odległości pomiędzy dwoma punktami geograficznymi.  
+Umożliwia wybór punktów ręcznie (współrzędne), z listy miast lub poprzez kliknięcie na mapie.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📦 Tech Stack
 
-## Customize configuration
+- **Frontend:** Vue 3, Vite, Vuetify 3, Leaflet
+- **Backend:** PHP
+- **Testy:** Vitest (unit), Cypress (e2e)
+- **Linting:** ESLint, Oxlint
+- **Formatowanie:** Prettier
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 📁 Struktura projektu
 
-## Project Setup
+geo-distance-app/
+├── frontend/ # Aplikacja Vue 3 │
+├── src/ # Komponenty, logika │
+├── public/ # Assets, np. cities.json │
+├── dist/ # Build produkcyjny (ignorowany przez git) │
+└── package.json # Skrypty i zależności
+├── backend/ │
+└── calculate-distance.php # PHP API
 
-```sh
-npm install
-```
+## 🚀 Uruchomienie lokalne
 
-### Compile and Hot-Reload for Development
+### 1. Klonuj repozytorium
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+```bash
+git clone https://github.com/TWOJ_LOGIN/geo-distance-app.git
+cd geo-distance-app
 ```
