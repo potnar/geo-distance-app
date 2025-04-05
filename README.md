@@ -111,18 +111,6 @@ VITE_API_URL=http://localhost:8000
 
 ---
 
-## 🖼️ Zrzuty ekranu
-
-### Widok główny
-
-![Widok główny](https://via.placeholder.com/800x400?text=Zrzut+ekranu+widoku+głównego)
-
-### Wynik obliczeń
-
-![Wynik obliczeń](https://via.placeholder.com/800x400?text=Zrzut+ekranu+wyniku+obliczeń)
-
----
-
 ## 📝 Licencja
 
 Projekt jest dostępny na licencji MIT. Szczegóły znajdziesz w pliku [LICENSE](LICENSE).
@@ -131,4 +119,4 @@ Projekt jest dostępny na licencji MIT. Szczegóły znajdziesz w pliku [LICENSE]
 
 ## 👨‍💻 Autorzy
 
-- **Twoje Imię i Nazwisko** - [Twój GitHub](https://github.com/TWOJ_LOGIN)
+- **Mikołaj Cholewa** - [Twój GitHub](https://github.com/potnar)
