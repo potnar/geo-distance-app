@@ -1,0 +1,18 @@
+# Frontend
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/.vscode/
+/frontend/.idea/
+
+# Backend (gdyby używać Composera)
+/backend/vendor/
+
+# Ogólne
+.DS_Store
+Thumbs.db
+.env
+*.log
+*.tmp
+*.bak
+*.swp
