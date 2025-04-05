@@ -171,7 +171,7 @@ const calculate = async () => {
   }
 
   try {
-    const res = await fetch('http://localhost:8000/calculate-distance.php', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/calculate-distance.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ lat1: la1, lon1: lo1, lat2: la2, lon2: lo2 })

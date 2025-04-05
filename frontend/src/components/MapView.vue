@@ -72,7 +72,7 @@ const onMapClick = (e) => {
 
 const fetchDistanceFromBackend = async (pointA, pointB) => {
   try {
-    const response = await fetch('http://localhost:8000/calculate-distance.php', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/calculate-distance.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
